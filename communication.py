@@ -105,15 +105,15 @@ def dist(midi):
     return distance
 
 ''' test variables '''
-#message = str(INSTR) + ' ' + str(1) + ';'
-#send2Pd(message)
-beats = 80
+message = str(INSTR) + ' ' + str(3) + ';'
+send2Pd(message)
+beats = 140
 BPM = 1.0 / (beats / 60.0)
 
 
 ''' turn midi data into frequency data for purr data '''
 def noteToFreq(note):
-    rootFreq = 432.0 #tuning
+    rootFreq = 440.0 #tuning
     a = (2.0)**(1/12.0)
     freq = rootFreq * (a**dist(note))
     return freq
@@ -131,8 +131,7 @@ def turnOff(note):
     message = str(NOTE) + ' ' + str(note) + ';'
     send2Pd(message)
 
-
-
+'''
 freq = ['A3', 'G3', 'F#3', 'G3', 'G3', 'F3', 'E3', 'F3', 'F3', 'E3', 'D#3', 'E3', 'D3', 'C#3', 'D3'
         'A3', 'G3', 'F#3', 'G3', 'C#3', 'A3', 'G#3', 'A3', 'C4', 'C#3', 'A3', 'C#3', 'A3', 'G3', 'F3', 'E3']
 #for inst in range(4):
@@ -152,7 +151,14 @@ for midi in freq:
     turnOn(note)
     time.sleep(BPM)
     turnOff(note)
+'''
 
+def play(freq):
+    for midi in freq:
+        note = noteToFreq(midi)
+        turnOn(note)
+        time.sleep(1.0 / (randrange(70,160) / 60.0))
+        turnOff(note)
 '''
 tempNotes = ['C','C#', 'D', 'D#', 'E','F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 def testChart():
@@ -162,9 +168,73 @@ def testChart():
 
 testChart()
 '''
-#print("rootNote: " + str(rootNote))
-#print("rootOctave: " + str(rootOctave))
-#print("midiNote: " + str(midiNote))
-#print("midiOctave: " + str(midiOctave))
-#print(int(rootOctave) != int(midiOctave))
-#print(rootNote != midiNote or int(rootOctave) != int(midiOctave))
+
+
+#TODO list comprehension
+def randomizer():
+    length = 32
+    freqs = []
+    notes = ['A','B','C','D','E','F','G']
+    octaves = [0,1,2,3,4,5,6,7,8]
+    for note in range(length):
+        note = notes[randrange(len(notes))]
+        octave = octaves[randrange(2,len(octaves)-3)]
+        freqs.append(note + str(octave))
+    print(freqs)
+    return freqs
+
+for plays in range(5):
+    play(randomizer())
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
