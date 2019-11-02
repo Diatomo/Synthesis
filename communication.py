@@ -6,6 +6,9 @@ from random import randrange
 #message = str(INSTR) + ' ' + str(3) + ';'
 
 
+
+#TODO communication params
+#TODO instrument
 class DAC:
 
     def __init__(self):
@@ -166,22 +169,3 @@ class DAC:
             turnOn(note)
             time.sleep(self.bpm)
             turnOff(note)
-
-
-'''
-#TODO list comprehension
-def randomizer():
-    length = 32
-    freqs = []
-    notes = ['A','B','C','D','E','F','G']
-    octaves = [0,1,2,3,4,5,6,7,8]
-    for note in range(length):
-        note = notes[randrange(len(notes))]
-        octave = octaves[randrange(2,len(octaves)-3)]
-        freqs.append(note + str(octave))
-    print(freqs)
-    return freqs
-
-for plays in range(5):
-    play(randomizer())
-'''

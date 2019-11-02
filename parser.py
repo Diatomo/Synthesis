@@ -1,6 +1,6 @@
 
 
-
+#TODO test incomplete file names
 class Parser:
 
     def __init__(self):
@@ -42,6 +42,39 @@ class Parser:
                     notes = []
         else:
             println("Incorrect format")
+
+
+class Randomizer:
+
+    def __init__(self):
+        self.length = 32
+        self.octaveMin = 2
+        self.octaveMax = 6
+        self.notes = ['A','B','C','D','E','F','G']
+        self.octaves = range(self.octaveMin, self.octaveMax)
+        self.song = {}
+        self.notes = []
+
+
+    def printNotes(self):
+        print(self.notes)
+
+    def printSong(self):
+        for key, value, in self.song.items():
+            print(key)
+            print(value)
+
+    def changeLength(self, length):
+        self.length = length
+
+    def setScale(self,scale):
+        pass
+
+    def pure(self):
+        for note in range(self.length):
+            note = self.notes[randrange(len(self.notes))]
+            octave = self.octaves[randrange(len(self.octaves))]
+            self.notes.append(note + str(octave))
 
 
 
