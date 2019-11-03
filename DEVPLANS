@@ -1,0 +1,10 @@
+
+
+
+Purpose of the Program:
+
+The purpose is to emulate characteristics of sequences. It's suppose to be a raw sequence painting device
+so that you can plug those sequences into program and have them play back. Polyphonically etc..
+
+The backend is going to be run by a puredata script. The front end will be javascript, and all the
+data analysis is going to be done by python. 
